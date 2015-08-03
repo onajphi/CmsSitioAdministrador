@@ -12,6 +12,6 @@ class LoginController extends Controller {
     
       public function loginAction()
     {
-        return new Response("<script type='text/javascript'>window.location='/home';</script>");
+        return new Response("<script  type='text/javascript'>window.location='/home';</script>");
     }
 }
