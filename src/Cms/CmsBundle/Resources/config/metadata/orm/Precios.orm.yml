@@ -1,0 +1,79 @@
+Precios:
+    type: entity
+    table: precios
+    uniqueConstraints:
+        ProductoId_UNIQUE:
+            columns:
+                - ProductoId
+    id:
+        precioid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: PrecioId
+            generator:
+                strategy: IDENTITY
+    fields:
+        unitario:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+            default: '0'
+            column: Unitario
+        menor:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+            default: '0'
+            column: Menor
+        mayor:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+            default: '0'
+            column: Mayor
+        venta:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+            default: '0'
+            column: Venta
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        productoid:
+            targetEntity: Productos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ProductoId:
+                    referencedColumnName: ProductoId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,74 @@
+Despachos:
+    type: entity
+    table: despachos
+    indexes:
+        fk_DespachosTipoDespachoId_TipoDespachosTipoDespachoId:
+            columns:
+                - TipoDespachoId
+    id:
+        despachoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: DespachoId
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: Nombre
+        entrega:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: Entrega
+        costo:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+            column: Costo
+        descripcion:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: ''
+            column: Descripcion
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        tipodespachoid:
+            targetEntity: Tipodespachos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                TipoDespachoId:
+                    referencedColumnName: TipoDespachoId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

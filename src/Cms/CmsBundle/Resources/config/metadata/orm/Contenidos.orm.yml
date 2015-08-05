@@ -1,0 +1,92 @@
+Contenidos:
+    type: entity
+    table: contenidos
+    indexes:
+        fk_ContenidosUsuarioId_UsuariosUsuarioId:
+            columns:
+                - UsuarioId
+        fk_ContenidosTipoContenidoId_TipoContenidosTipoContenidoId:
+            columns:
+                - TipoContenidoId
+        fk_ContenidosArchivoId_ArchivosArchivoId:
+            columns:
+                - ArchivoId
+    id:
+        contenidoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ContenidoId
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: Nombre
+        descripcion:
+            type: string
+            nullable: false
+            length: 300
+            fixed: false
+            comment: ''
+            column: Descripcion
+        texto:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+            column: Texto
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        archivoid:
+            targetEntity: Archivos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ArchivoId:
+                    referencedColumnName: ArchivoId
+            orphanRemoval: false
+        tipocontenidoid:
+            targetEntity: Tipocontenidos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                TipoContenidoId:
+                    referencedColumnName: TipoContenidoId
+            orphanRemoval: false
+        usuarioid:
+            targetEntity: Usuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                UsuarioId:
+                    referencedColumnName: UsuarioId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

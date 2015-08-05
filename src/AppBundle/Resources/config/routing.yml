@@ -1,0 +1,4 @@
+app_archivos:
+    resource: "@AppBundle/Resources/config/routing/archivos.php"
+    prefix:   /archivos
+

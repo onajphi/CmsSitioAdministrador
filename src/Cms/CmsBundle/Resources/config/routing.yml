@@ -1,0 +1,13 @@
+cms_home:
+    resource: "@CmsBundle/Resources/config/routing/estadoproductos.php"
+    prefix:   /hello/{name}
+    defaults:  { _controller: CmsBundle:Default:index }
+    
+cms_estadoproductos:
+    resource: "@CmsBundle/Resources/config/routing/estadoproductos.php"
+    prefix:   /estadoproductos
+
+cms_estadopedidos:
+    resource: "@CmsBundle/Resources/config/routing/estadopedidos.php"
+    prefix:   /estadopedidos
+

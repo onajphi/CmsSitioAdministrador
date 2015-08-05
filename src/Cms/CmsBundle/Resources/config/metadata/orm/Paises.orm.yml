@@ -1,0 +1,36 @@
+Paises:
+    type: entity
+    table: paises
+    id:
+        paisid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: PaisId
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: Nombre
+        continente:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: Continente
+        gentilicio:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: Gentilicio
+    lifecycleCallbacks: {  }

@@ -1,0 +1,82 @@
+Direcciones:
+    type: entity
+    table: direcciones
+    indexes:
+        fk_DireccionesComunaId_ComunasComunaId:
+            columns:
+                - ComunaId
+    id:
+        direccionid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: DireccionId
+            generator:
+                strategy: IDENTITY
+    fields:
+        calle:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: Calle
+        numero:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+            column: Numero
+        poblacion:
+            type: string
+            nullable: true
+            length: 60
+            fixed: false
+            comment: ''
+            column: Poblacion
+        block:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: Block
+        depto:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: Depto
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        comunaid:
+            targetEntity: Comunas
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ComunaId:
+                    referencedColumnName: ComunaId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

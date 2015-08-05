@@ -1,0 +1,41 @@
+Ciudades:
+    type: entity
+    table: ciudades
+    indexes:
+        fk_CiudadesRegionId_RegionesRegionId:
+            columns:
+                - RegionId
+    id:
+        ciudadid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: CiudadId
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: Nombre
+        capital:
+            type: boolean
+            nullable: true
+            comment: ''
+            column: Capital
+    manyToOne:
+        regionid:
+            targetEntity: Regiones
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                RegionId:
+                    referencedColumnName: RegionId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

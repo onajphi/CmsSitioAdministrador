@@ -1,0 +1,40 @@
+Tipodespachos:
+    type: entity
+    table: tipodespachos
+    id:
+        tipodespachoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: TipoDespachoId
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: Nombre
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    lifecycleCallbacks: {  }

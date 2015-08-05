@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Archivos</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Archivoid</th>
+                <td>{{ entity.archivoid }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ entity.url }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ entity.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Vigente</th>
+                <td>{{ entity.vigente }}</td>
+            </tr>
+            <tr>
+                <th>Eliminado</th>
+                <td>{{ entity.eliminado }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('archivos') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('archivos_edit', { 'id': entity.archivoid }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

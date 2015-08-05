@@ -1,0 +1,68 @@
+Archivos:
+    type: entity
+    table: archivos
+    indexes:
+        fk_ArchivosTipoArchivoId_TipoArchivosTipoArchivoId:
+            columns:
+                - TipoArchivoId
+    id:
+        archivoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ArchivoId
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: Nombre
+        url:
+            type: string
+            nullable: true
+            length: 250
+            fixed: false
+            comment: ''
+            column: Url
+        descripcion:
+            type: string
+            nullable: true
+            length: 150
+            fixed: false
+            comment: ''
+            column: Descripcion
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        tipoarchivoid:
+            targetEntity: Tipoarchivos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                TipoArchivoId:
+                    referencedColumnName: TipoArchivoId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

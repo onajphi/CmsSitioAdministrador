@@ -1,0 +1,85 @@
+Contactos:
+    type: entity
+    table: contactos
+    id:
+        contactoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ContactoId
+            generator:
+                strategy: IDENTITY
+    fields:
+        telefono:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: Telefono
+        celular:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: Celular
+        email1:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: Email1
+        email2:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: Email2
+        fax:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: Fax
+        postal:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: Postal
+        skype:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: Skype
+        twitter:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: Twitter
+        facebook:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: Facebook
+        googleplus:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: GooglePlus
+    lifecycleCallbacks: {  }

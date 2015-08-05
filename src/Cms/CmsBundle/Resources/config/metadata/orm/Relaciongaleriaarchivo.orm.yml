@@ -1,0 +1,59 @@
+Relaciongaleriaarchivo:
+    type: entity
+    table: relaciongaleriaarchivo
+    indexes:
+        fk_RelacionGaleriaArchivo_GaleriasGaleriaId:
+            columns:
+                - GaleriaId
+        fk_RelacionGaleriaArchivo_ArchivosArchivoId:
+            columns:
+                - ArchivoId
+    id:
+        galeriaarchivoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: GaleriaArchivoId
+            generator:
+                strategy: IDENTITY
+    fields:
+        vigente:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        archivoid:
+            targetEntity: Archivos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ArchivoId:
+                    referencedColumnName: ArchivoId
+            orphanRemoval: false
+        galeriaid:
+            targetEntity: Galerias
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GaleriaId:
+                    referencedColumnName: GaleriaId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,59 @@
+Relacionproductocomentario:
+    type: entity
+    table: relacionproductocomentario
+    indexes:
+        fk_RelacionProductoComentarioProductoId_ProductosProductoId:
+            columns:
+                - ProductoId
+        fk_RelacionProductoComentarioId_ComentariosComentarioId:
+            columns:
+                - ComentarioId
+    id:
+        productocomentarioid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ProductoComentarioId
+            generator:
+                strategy: IDENTITY
+    fields:
+        vigente:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        comentarioid:
+            targetEntity: Comentarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ComentarioId:
+                    referencedColumnName: ComentarioId
+            orphanRemoval: false
+        productoid:
+            targetEntity: Productos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ProductoId:
+                    referencedColumnName: ProductoId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

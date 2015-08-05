@@ -1,0 +1,81 @@
+Comentarios:
+    type: entity
+    table: comentarios
+    indexes:
+        fk_ComentariosUsuarioId_UsuariosUsuarioId:
+            columns:
+                - UsuarioId
+    id:
+        comentarioid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ComentarioId
+            generator:
+                strategy: IDENTITY
+    fields:
+        texto:
+            type: string
+            nullable: false
+            length: 500
+            fixed: false
+            comment: ''
+        nombre:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: ''
+            column: Nombre
+        email:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: ''
+            column: Email
+        ip:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            comment: ''
+            column: Ip
+        aprobado:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            default: '0'
+            column: Aprobado
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        usuarioid:
+            targetEntity: Usuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                UsuarioId:
+                    referencedColumnName: UsuarioId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

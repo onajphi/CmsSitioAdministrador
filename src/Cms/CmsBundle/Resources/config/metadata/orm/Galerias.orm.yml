@@ -1,0 +1,59 @@
+Galerias:
+    type: entity
+    table: galerias
+    id:
+        galeriaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: GaleriaId
+            generator:
+                strategy: IDENTITY
+    fields:
+        archivoid:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: ArchivoId
+        tipogaleriaid:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: TipoGaleriaId
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: Nombre
+        descripcion:
+            type: string
+            nullable: true
+            length: 150
+            fixed: false
+            comment: ''
+            column: Descripcion
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    lifecycleCallbacks: {  }

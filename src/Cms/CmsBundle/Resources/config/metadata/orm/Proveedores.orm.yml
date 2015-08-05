@@ -1,0 +1,71 @@
+Proveedores:
+    type: entity
+    table: proveedores
+    indexes:
+        fk_ProveedoresPersonaId_PersonasPersonaId:
+            columns:
+                - PersonaId
+        fk_ProveedoresDireccionId_DireccionesDireccionId:
+            columns:
+                - DireccionId
+        fk_ProveedoresContactoId_ContactosContactoId:
+            columns:
+                - ContactoId
+    id:
+        proveedorid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ProveedorId
+            generator:
+                strategy: IDENTITY
+    fields:
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        contactoid:
+            targetEntity: Contactos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ContactoId:
+                    referencedColumnName: ContactoId
+            orphanRemoval: false
+        direccionid:
+            targetEntity: Direcciones
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                DireccionId:
+                    referencedColumnName: DireccionId
+            orphanRemoval: false
+        personaid:
+            targetEntity: Personas
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PersonaId:
+                    referencedColumnName: PersonaId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

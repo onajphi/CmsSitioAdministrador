@@ -1,0 +1,59 @@
+Relacionusuariorol:
+    type: entity
+    table: relacionusuariorol
+    indexes:
+        fk_RelacionUsuarioRolUsuarioId_UsuariosUsuarioId:
+            columns:
+                - UsuarioId
+        fk_RelacionUsuarioRolRolId_RolesRolId:
+            columns:
+                - RolId
+    id:
+        usuariorolid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: UsuarioRolId
+            generator:
+                strategy: IDENTITY
+    fields:
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        rolid:
+            targetEntity: Roles
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                RolId:
+                    referencedColumnName: RolId
+            orphanRemoval: false
+        usuarioid:
+            targetEntity: Usuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                UsuarioId:
+                    referencedColumnName: UsuarioId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

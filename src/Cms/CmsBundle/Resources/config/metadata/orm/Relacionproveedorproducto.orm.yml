@@ -1,0 +1,59 @@
+Relacionproveedorproducto:
+    type: entity
+    table: relacionproveedorproducto
+    indexes:
+        fk_RelacionProveedorProductoProveedorId_ProveedoresProveedorId:
+            columns:
+                - ProveedorId
+        fk_RelacionProveedorProductoProductoId_ProductosProductoId:
+            columns:
+                - ProductoId
+    id:
+        proveedorproductoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ProveedorProductoId
+            generator:
+                strategy: IDENTITY
+    fields:
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        productoid:
+            targetEntity: Productos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ProductoId:
+                    referencedColumnName: ProductoId
+            orphanRemoval: false
+        proveedorid:
+            targetEntity: Proveedores
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ProveedorId:
+                    referencedColumnName: ProveedorId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

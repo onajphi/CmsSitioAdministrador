@@ -1,0 +1,59 @@
+Relacioncontenidocomentario:
+    type: entity
+    table: relacioncontenidocomentario
+    indexes:
+        fk_RelacionContenidoComentarioContenidoId_ContenidosContenidoId:
+            columns:
+                - ContenidoId
+        fk_RelacionContenidoComentarioId_ComentariosComentarioId:
+            columns:
+                - ComentarioId
+    id:
+        contenidocomentarioid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ContenidoComentarioId
+            generator:
+                strategy: IDENTITY
+    fields:
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        contenidoid:
+            targetEntity: Contenidos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ContenidoId:
+                    referencedColumnName: ContenidoId
+            orphanRemoval: false
+        comentarioid:
+            targetEntity: Comentarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ComentarioId:
+                    referencedColumnName: ComentarioId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

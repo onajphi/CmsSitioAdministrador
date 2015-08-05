@@ -1,0 +1,80 @@
+Stocks:
+    type: entity
+    table: stocks
+    indexes:
+        fk_StocksProductoId_ProductosProductoId:
+            columns:
+                - ProductoId
+        fk_StocksBodegaId_BodegasBodegaId:
+            columns:
+                - BodegaId
+    id:
+        stockid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: StockId
+            generator:
+                strategy: IDENTITY
+    fields:
+        cantidad:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+            column: Cantidad
+        maximo:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+            column: Maximo
+        minimo:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+            column: Minimo
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        bodegaid:
+            targetEntity: Bodegas
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                BodegaId:
+                    referencedColumnName: BodegaId
+            orphanRemoval: false
+        productoid:
+            targetEntity: Productos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ProductoId:
+                    referencedColumnName: ProductoId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

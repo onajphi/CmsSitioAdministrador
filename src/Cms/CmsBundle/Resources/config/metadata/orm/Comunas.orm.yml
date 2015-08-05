@@ -1,0 +1,36 @@
+Comunas:
+    type: entity
+    table: comunas
+    indexes:
+        fk_ComunasCiudadId_CiudadesCiudadId:
+            columns:
+                - CiudadId
+    id:
+        comunaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ComunaId
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: Nombre
+    manyToOne:
+        ciudadid:
+            targetEntity: Ciudades
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CiudadId:
+                    referencedColumnName: CiudadId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

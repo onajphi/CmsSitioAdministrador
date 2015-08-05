@@ -1,0 +1,54 @@
+Catalogos:
+    type: entity
+    table: catalogos
+    indexes:
+        fk_catalogosArchivoId_ArchivosArchivoId:
+            columns:
+                - ArchivoId
+    id:
+        catalogoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: CatalogoId
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: Nombre
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        archivoid:
+            targetEntity: Archivos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ArchivoId:
+                    referencedColumnName: ArchivoId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

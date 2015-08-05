@@ -1,0 +1,73 @@
+Usuarios:
+    type: entity
+    table: usuarios
+    indexes:
+        fk_UsuariosPersonaId_PersonasPersonaId:
+            columns:
+                - PersonaId
+        fk_UsuariosContactoId_ContactosContactoId:
+            columns:
+                - ContactoId
+    id:
+        usuarioid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: UsuarioId
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: Nombre
+        password:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: Password
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        contactoid:
+            targetEntity: Contactos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ContactoId:
+                    referencedColumnName: ContactoId
+            orphanRemoval: false
+        personaid:
+            targetEntity: Personas
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PersonaId:
+                    referencedColumnName: PersonaId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

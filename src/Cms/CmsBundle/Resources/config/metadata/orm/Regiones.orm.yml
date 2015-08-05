@@ -1,0 +1,43 @@
+Regiones:
+    type: entity
+    table: regiones
+    indexes:
+        fk_RegionesPaisId_PaisesPaisId:
+            columns:
+                - PaisId
+    id:
+        regionid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: RegionId
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: Nombre
+        numero:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            comment: ''
+            column: Numero
+    manyToOne:
+        paisid:
+            targetEntity: Paises
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PaisId:
+                    referencedColumnName: PaisId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

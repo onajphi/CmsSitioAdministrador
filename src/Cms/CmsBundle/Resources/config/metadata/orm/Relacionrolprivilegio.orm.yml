@@ -1,0 +1,61 @@
+Relacionrolprivilegio:
+    type: entity
+    table: relacionrolprivilegio
+    indexes:
+        fk_RelacionRolPrivilegio_RolesRolId:
+            columns:
+                - RolId
+        fk_RelacionRolPrivilegio_PrivilegiosPrivilegioId:
+            columns:
+                - PrivilegioId
+    id:
+        rolprivilegioid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: RolPrivilegioId
+            generator:
+                strategy: IDENTITY
+    fields:
+        vigente:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            default: 'true'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        privilegioid:
+            targetEntity: Privilegios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PrivilegioId:
+                    referencedColumnName: PrivilegioId
+            orphanRemoval: false
+        rolid:
+            targetEntity: Roles
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                RolId:
+                    referencedColumnName: RolId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

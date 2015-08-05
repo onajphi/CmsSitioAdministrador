@@ -1,0 +1,95 @@
+Pedidos:
+    type: entity
+    table: pedidos
+    indexes:
+        fk_PedidosEstadoPedidoId_EstadoPedidosEstadoPedidoId:
+            columns:
+                - EstadoPedidoId
+        fk_PedidosDespachoId_DespachosDespachoId:
+            columns:
+                - DespachoId
+        fk_PedidosClienteId_ClientesClienteId:
+            columns:
+                - ClienteId
+        fk_PedidosDireccionId_DireccionesDireccionId:
+            columns:
+                - DireccionId
+    id:
+        pedidoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: PedidoId
+            generator:
+                strategy: IDENTITY
+    fields:
+        entrega:
+            type: date
+            nullable: true
+            comment: ''
+            column: Entrega
+        descripcion:
+            type: string
+            nullable: true
+            length: 150
+            fixed: false
+            comment: ''
+            column: Descripcion
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        clienteid:
+            targetEntity: Clientes
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ClienteId:
+                    referencedColumnName: ClienteId
+            orphanRemoval: false
+        despachoid:
+            targetEntity: Despachos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                DespachoId:
+                    referencedColumnName: DespachoId
+            orphanRemoval: false
+        direccionid:
+            targetEntity: Direcciones
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                DireccionId:
+                    referencedColumnName: DireccionId
+            orphanRemoval: false
+        estadopedidoid:
+            targetEntity: Estadopedidos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                EstadoPedidoId:
+                    referencedColumnName: EstadoPedidoId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

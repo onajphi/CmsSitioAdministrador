@@ -1,0 +1,104 @@
+Productos:
+    type: entity
+    table: productos
+    indexes:
+        fk_ProductosEstadoProductoId_EstadoProductosEstadoProductoId:
+            columns:
+                - EstadoProductoId
+        fk_ProductosFabricanteId_FabricantesFabricanteId:
+            columns:
+                - FabricanteId
+        fk_ProductosArchivoId_ArchivosArchivoId:
+            columns:
+                - ArchivoId
+        fk_ProductosSubCategoriaId_SubCategoriasSubCategoriaId:
+            columns:
+                - SubCategoriaId
+    id:
+        productoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ProductoId
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: Nombre
+        descripcion:
+            type: string
+            nullable: true
+            length: 150
+            fixed: false
+            comment: ''
+            column: Descripcion
+        serie:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: ''
+            column: Serie
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        archivoid:
+            targetEntity: Archivos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ArchivoId:
+                    referencedColumnName: ArchivoId
+            orphanRemoval: false
+        estadoproductoid:
+            targetEntity: Estadoproductos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                EstadoProductoId:
+                    referencedColumnName: EstadoProductoId
+            orphanRemoval: false
+        fabricanteid:
+            targetEntity: Fabricantes
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                FabricanteId:
+                    referencedColumnName: FabricanteId
+            orphanRemoval: false
+        subcategoriaid:
+            targetEntity: Subcategorias
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                SubCategoriaId:
+                    referencedColumnName: SubCategoriaId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

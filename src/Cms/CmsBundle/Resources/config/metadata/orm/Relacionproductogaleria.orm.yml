@@ -1,0 +1,59 @@
+Relacionproductogaleria:
+    type: entity
+    table: relacionproductogaleria
+    indexes:
+        fk_RelacionProductoGaleria_ProductosProductoId:
+            columns:
+                - ProductoId
+        fk_RelacionProductoGaleria_GaleriasGaleriaId:
+            columns:
+                - GaleriaId
+    id:
+        productogaleriaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ProductoGaleriaId
+            generator:
+                strategy: IDENTITY
+    fields:
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        galeriaid:
+            targetEntity: Galerias
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GaleriaId:
+                    referencedColumnName: GaleriaId
+            orphanRemoval: false
+        productoid:
+            targetEntity: Productos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ProductoId:
+                    referencedColumnName: ProductoId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

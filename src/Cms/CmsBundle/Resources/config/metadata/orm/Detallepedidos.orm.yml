@@ -1,0 +1,72 @@
+Detallepedidos:
+    type: entity
+    table: detallepedidos
+    indexes:
+        fk_DetallePedidosPedidoId_PedidosPedidoId:
+            columns:
+                - PedidoId
+        fk_DetallePedidosProductoId_ProductosProductoId:
+            columns:
+                - ProductoId
+    id:
+        detallepedidoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: DetallePedidoId
+            generator:
+                strategy: IDENTITY
+    fields:
+        cantidad:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: Cantidad
+        valor:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+            column: Valor
+        vigente:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: true
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        pedidoid:
+            targetEntity: Pedidos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PedidoId:
+                    referencedColumnName: PedidoId
+            orphanRemoval: false
+        productoid:
+            targetEntity: Productos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ProductoId:
+                    referencedColumnName: ProductoId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

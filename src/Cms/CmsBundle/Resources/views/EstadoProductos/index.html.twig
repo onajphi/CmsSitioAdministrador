@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>EstadoProductos list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Estadoproductoid</th>
+                <th>Nombre</th>
+                <th>Vigente</th>
+                <th>Eliminado</th>
+                <th>Fecha</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('estadoproductos_show', { 'id': entity.estadoproductoid }) }}">{{ entity.estadoproductoid }}</a></td>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.vigente }}</td>
+                <td>{{ entity.eliminado }}</td>
+                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('estadoproductos_show', { 'id': entity.estadoproductoid }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('estadoproductos_edit', { 'id': entity.estadoproductoid }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('estadoproductos_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

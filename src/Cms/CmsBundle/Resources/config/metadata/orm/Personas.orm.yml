@@ -1,0 +1,86 @@
+Personas:
+    type: entity
+    table: personas
+    indexes:
+        fk_PersonasPersonasId_EstadoCivilesEstadoCivilId:
+            columns:
+                - EstadoCivilId
+    uniqueConstraints:
+        Rut_UNIQUE:
+            columns:
+                - Rut
+    id:
+        personaid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: PersonaId
+            generator:
+                strategy: IDENTITY
+    fields:
+        paterno:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            comment: ''
+            column: Paterno
+        materno:
+            type: string
+            nullable: true
+            length: 30
+            fixed: false
+            comment: ''
+            column: Materno
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: Nombre
+        rut:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            comment: ''
+            column: Rut
+        dv:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            comment: ''
+            column: Dv
+        nacimiento:
+            type: date
+            nullable: true
+            comment: ''
+            column: Nacimiento
+        sexo:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            comment: ''
+            column: Sexo
+        eliminado:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '0'
+            column: Eliminado
+    manyToOne:
+        estadocivilid:
+            targetEntity: Estadociviles
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                EstadoCivilId:
+                    referencedColumnName: EstadoCivilId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

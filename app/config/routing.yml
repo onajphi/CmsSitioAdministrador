@@ -1,9 +1,6 @@
-main:
-    resource: "@MainBundle/Resources/config/routing.php"
+cms:
+    resource: "@CmsBundle/Resources/config/routing.php"
     prefix:   /
 
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
 
 

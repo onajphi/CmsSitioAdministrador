@@ -1,0 +1,59 @@
+Relacioncatalogoproducto:
+    type: entity
+    table: relacioncatalogoproducto
+    indexes:
+        fk_RelacionCatalogoProductoCatalogoId_CatalogosCatalogoId:
+            columns:
+                - CatalogoId
+        fk_RelacionCatalogoProductoProductoId_ProductosProductoId:
+            columns:
+                - ProductoId
+    id:
+        catalogoproductoid:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: CatalogoProductoId
+            generator:
+                strategy: IDENTITY
+    fields:
+        vigente:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '1'
+            column: Vigente
+        eliminado:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '0'
+            column: Eliminado
+        fecha:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: Fecha
+    manyToOne:
+        catalogoid:
+            targetEntity: Catalogos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CatalogoId:
+                    referencedColumnName: CatalogoId
+            orphanRemoval: false
+        productoid:
+            targetEntity: Productos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ProductoId:
+                    referencedColumnName: ProductoId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
